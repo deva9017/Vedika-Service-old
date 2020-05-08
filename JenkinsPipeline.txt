@@ -1,0 +1,17 @@
+node{
+  stage ('Clone From Git') {
+
+    git url: 'https://github.com/deva9017/Vedika-Service.git'
+  }
+    stage('Continue Trigger')
+    {
+        cron('H */8 * * *') //regular builds
+        pollSCM('* * * * *') //polling for changes, here once a minute
+    } 
+    stage('Gradle Build')
+    {
+    def NameType=tool name: 'Gradle', type: 'gradle'
+    def execute="${NameType}/bin/gradle"
+    sh "${execute} clean build"
+    }
+}
