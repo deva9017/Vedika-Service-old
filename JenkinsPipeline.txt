@@ -8,10 +8,10 @@ node{
         cron('H */8 * * *') //regular builds
         pollSCM('* * * * *') //polling for changes, here once a minute
     } 
-    stage('Gradle Build')
+   stage('Gradle Build')
     {
-    def NameType=tool name: 'Gradle', type: 'gradle'
-    def execute="${NameType}/bin/gradle"
-    sh "${execute} clean build"
+    def buildInfo=tool name: 'Gradle', type: 'gradle'
+    def rootDir="${buildInfo/bin/gradle"
+    sh "${rootDir} clean build"
     }
 }
