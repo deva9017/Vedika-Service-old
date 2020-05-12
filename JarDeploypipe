@@ -16,6 +16,6 @@ node{
     }
   stage('script')
   {
-  sh label: '', returnStdout: true, script: 'scp -r /var/lib/jenkins/workspace/GradleProj/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar root@ip35.154.44.180:home/apache-tomcat-8.5.54/webapps'
+  sh label: '', returnStdout: true, script: 'scp -r /var/lib/jenkins/workspace/GradleProj/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar root@35.154.44.180:home/apache-tomcat-8.5.54/webapps'
   }
 }
