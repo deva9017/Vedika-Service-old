@@ -1,0 +1,21 @@
+node{
+  stage ('Clone From Git') {
+
+    git url: 'https://github.com/deva9017/Vedika-Service.git'
+  }
+    stage('Continue Trigger')
+    {
+        cron('H */8 * * *') //regular builds
+        pollSCM('* * * * *') //polling for changes, here once a minute
+    } 
+   stage('Gradle Build')
+    {
+    def buildInfo=tool name: 'Gradle', type: 'gradle'
+    def rootDir="${buildInfo}/bin/gradle"
+    sh "${rootDir} clean build"
+    }
+  stage('script'){
+   sh label: '', script: '''#!/bin/bash
+    scp /var/lib/jenkins/workspace/GradleProj/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar root@ip35.154.44.180:home/apache-tomcat-8.5.54/webapps
+   }
+}
