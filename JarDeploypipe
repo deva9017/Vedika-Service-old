@@ -15,7 +15,7 @@ node{
     sh "${rootDir} clean build"
     }
   stage('Deploy')
-  {  sh label: '', script: '''sshpass -p 123 scp gradle/wrapper/functionhall-service-0.0.1-SNAPSHOT.jar ec2-user@13.232.135.164:/home/ec2-user/vedics
+  {  sh label: '', script: '''sshpass -p 123 scp gradle/wrapper/functionhall-service-0.0.1-SNAPSHOT.jar root@13.232.135.164:/home/ec2-user/vedics
 #!/bin/sh
 cd /home/ec2-user/vedics/home/ec2-user/vedics
 java -jar functionhall-service-0.0.1-SNAPSHOT.jar
