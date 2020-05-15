@@ -14,7 +14,8 @@ node{
     def rootDir="${buildInfo}/bin/gradle"
     sh "${rootDir} clean build"
     }
-  stage('Deploy Publish Over SSH')sshPublisher(publishers: [sshPublisherDesc(configName: 'TomServ', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''#!/bin/sh  
+  stage('Deploy Publish Over SSH'){
+  sshPublisher(publishers: [sshPublisherDesc(configName: 'TomServ', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''#!/bin/sh  
 cd /home/ec2-user/vedic 
 sudo kill $(sudo lsof -t -i:8057) 
 java -jar *.jar''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
