@@ -6,7 +6,11 @@ node{
      def gradleHome = tool name: 'Gradle', type: 'gradle'
      def gradleCMD = "${gradleHome}/bin/gradle"
      sh "${gradleCMD} clean build"
-     } 
+     }
+ 
+ sshagent(['15.206.157.217']) {
+    // some block
+}
   stage('playbook Execution'){   
      sh label: '', script: '''cd /home/ubuntu
      sudo ansible-playbook script.yml'''
