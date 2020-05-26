@@ -7,11 +7,8 @@ node{
      def gradleCMD = "${gradleHome}/bin/gradle"
      sh "${gradleCMD} clean build"
      }
-     node {
-  sshagent (credentials: ['15.206.157.217']) {
-    sh 'ssh -o StrictHostKeyChecking=yes -l cloudbees 15.206.157.217 uname -a'
+     stage('playbook exc'){
   sh label: '', script: '''cd /home/ubuntu
      sudo ansible-playbook script.yml'''
-}
 }
 }
