@@ -5,7 +5,7 @@ node{
    stage('gradle Package'){
      def gradleHome = tool name: 'Gradle', type: 'gradle'
      def gradleCMD = "${gradleHome}/bin/gradle"
-     sh "${gradleCMD} ./gradlew clean"
+     sh "${gradleCMD} clean build"
      }
      stage('playbook exc'){
   sh label: '', script: '''cd /home/ubuntu
