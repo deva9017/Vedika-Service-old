@@ -28,6 +28,12 @@ node{
    echo Ansible version
    sudo ansible --version'''
    }
+   stage('permissions to dir')
+   {
+   sh label: '', script: '''sudo chmod 777 /usr/
+sudo chmod 777 /usr/local/
+sudo chmod 777 /usr/local/bin/'''
+}
    stage('Creating bash script to run jar'){   
      sh label: '', script: '''cd /usr/local/bin
 cat >vedikaservice.sh <<'EOF'
@@ -71,6 +77,11 @@ restart)
       echo "$SERVICE_NAME is not running ..."    
      fi     ;;
   esac'''   
+      }
+      stage('permissions to dir')
+      {
+      sh label: '', script: '''sudo chmod 777 /etc/systemd/
+      sudo chmod 777 /etc/system/'''
       }
     stage('Creating jar as a service'){ 
 sh label: '', script: '''cd /etc/systemd/system/
