@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-       git credentialsId: 'git-creds', url: 'https://github.com/shivastunts0327/Vedika-Service.git'
+       git credentialsId: 'git-creds', url: 'https://github.com/deva9017/Vedika-Service-old.git'
    }
    stage('gradle Package'){
      def gradleHome = tool name: 'gradle', type: 'gradle'
@@ -102,7 +102,7 @@ cat >vedikaservice.service <<'EOF'
 	sh label: '', script: '''cd /opt/
 sudo echo "---
 -
-  hosts: 13.233.94.247
+  hosts: 15.206.159.7
   tasks:
     -
       apt:
@@ -117,7 +117,7 @@ sudo echo "---
       with_items: openjdk-8-jdk  
     -
       copy:
-        src:  /var/lib/jenkins/workspace/service/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar
+        src:  /var/lib/jenkins/workspace/ServiceAnsible/build/libs/functionhall-service-0.0.1-SNAPSHOT.jar
         dest: /home/ubuntu/
     -
       copy:
