@@ -110,7 +110,9 @@ cat >vedikaservice.service <<'EOF'
 	}
 	
 	stage('playbook creation'){
+	sh label: '', script: 'sudo chmod 777 /opt'
 	sh label: '', script: '''cd /opt/
+	
 sudo echo "---
 -
   hosts: 15.206.159.7
